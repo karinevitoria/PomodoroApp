@@ -1,0 +1,102 @@
+* {
+    font-family: "Mukta", sans-serif;
+}
+
+body {
+    background-color: #F6FEDB;
+}
+
+#bar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#infos {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px 10px;
+    background-color: #FA9F42;
+    width: fit-content;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#controls button {
+    background-color: transparent;
+    color: #4E4C67;
+    font-size: 1.2em;
+    border: 0cm;
+}
+
+#timerSection {
+    background-color: #A6B1E1;
+    width: fit-content;
+    padding: 20px 20px 20px;
+    border-radius: 20px;
+}
+
+#timerSection p {
+    font-size: 8em;
+    margin: 0px;
+    color: white;
+}
+
+#counter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.icons-counter {
+    font-size: 1em;
+    color: #A6B1E1;
+    padding-right: 1px;
+}
+
+#timerControl {
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+#timeSession {
+    background-color: #ACE4AA;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0% 30% 5%;
+    font-size: 3.4em;
+}
+
+#timeBreak {
+    background-color: #ACE4AA;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0% 30% 5%;
+    font-size: 3.4em;
+}
+
+#timerControl p {
+    margin: 0%;
+}
+
+#session {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#break{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
