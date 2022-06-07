@@ -15,44 +15,50 @@
 
 <body>
     <div class="container">
-        <div class="modal" id="infos">
-            <button><span class="material-icons">info</span></button>
+        <div id="test">
+            
+            <div id="bar">
+                <h1 id="title">Study with the pomodoro technique. :) </h1>
+            </div>
+            <div class="modal" id="infos">
+                <button><span class="material-icons">info</span></button>
+            </div>
         </div>
-        <div id="bar">
-            <h1 id="title">Study with the pomodoro technique. :) </h1>
-        </div>
-
         <div id="counter">
             <div id="controls">
-                <button id="start"><span class="material-icons icons-counter">play_arrow</span>start</button>
-                <button id="pause"><span class="material-icons icons-counter">pause</span>pause</button>
-                <button id="reset"><span class="material-icons icons-counter">replay</span>reset</button>
-                <button id="reset"><span class="material-icons icons-counter">play_arrow</span>start break</button>
-                <button id="reset"><span class="material-icons icons-counter">play_arrow</span>longer break</button>
+                <button onclick="setInterval(timerStart, 1000)" id="start"><span class="material-icons icons-counter">play_arrow</span>start</button>
+                <button onclick="setResumeMode()" id="resume"><span class="material-icons icons-counter">play_arrow</span>resume</button>
+                <button onclick="timerPause()" id="pause"><span class="material-icons icons-counter">pause</span>pause</button>
+                <button onclick="resetTime(),setResumeMode()" id="reset"><span class="material-icons icons-counter">replay</span>reset</button>
+                <button onclick="startBreak()" id="sbreak"><span class="material-icons icons-counter">play_arrow</span>start break</button>
+                <button id="lbreak"><span class="material-icons icons-counter">play_arrow</span>longer break</button>
             </div>
             <div id="timerSection">
-                <p id="timer">25:00</p>
+                <p style="cursor: default;" id="timer">25:00</p>
             </div>
+
+<p>This is your first session.</p>
+
         </div>
 
         <div id="timerControl">
             <div id="session">
-                <span class="material-icons">
+                <span style="cursor:pointer;" onclick="changeTime('add','session')" class="material-icons">
                     expand_less
                 </span>
-                <p id="timeSession">25</p>
-                <p>session</p>
-                <span class="material-icons">
+                <p id="timeSession"></p>
+                <p style="cursor: default;">session</p>
+                <span style="cursor:pointer;" onclick="changeTime('minus','session')" class="material-icons">
                     expand_more
                 </span>
             </div>
             <div id="break">
-                <span class="material-icons">
+                <span style="cursor:pointer;" onclick="changeTime('add','break')" class="material-icons">
                     expand_less
                 </span>
-                <p id="timeBreak">05</p>
-                <p>break</p>
-                <span class="material-icons">
+                <p id="timeBreak"></p>
+                <p style="cursor: default;">break</p>
+                <span style="cursor:pointer;" onclick="changeTime('minus','break')" class="material-icons">
                     expand_more
                 </span>
             </div>
@@ -61,4 +67,6 @@
     </div>
 </body>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/script.js"></script>
 </html>

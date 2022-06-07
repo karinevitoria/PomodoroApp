@@ -5,7 +5,8 @@
 body {
     background-color: #F6FEDB;
 }
-
+#test{
+display: flex;}
 #bar {
     display: flex;
     width: 100%;
@@ -15,12 +16,13 @@ body {
 #infos {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 #controls {
     display: flex;
     justify-content: center;
-    padding: 10px 10px 10px;
+    padding: 10px 10px 0px;
     background-color: #FA9F42;
     width: fit-content;
     border-radius: 10px 10px 0px 0px;
@@ -29,14 +31,14 @@ body {
 #controls button {
     background-color: transparent;
     color: #4E4C67;
-    font-size: 1.2em;
+    font-size: 1.6em;
     border: 0cm;
 }
 
 #timerSection {
     background-color: #A6B1E1;
     width: fit-content;
-    padding: 20px 20px 20px;
+    padding: 20px 40px 20px;
     border-radius: 20px;
 }
 
@@ -63,7 +65,11 @@ body {
 #timerControl {
     display: flex;
     justify-content: center;
-    padding-top: 5%;
+    padding-top: 0px;
+}
+
+#controls button{
+cursor: pointer;
 }
 
 #timeSession {
