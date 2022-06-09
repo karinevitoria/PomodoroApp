@@ -1,5 +1,6 @@
 let studytime1 = false;
 let breaktime1 = false;
+var audio = new Audio('./assets/audio/audio.mp3');
 
 //session storage
 let sessionStorageSessions = JSON.parse(sessionStorage.getItem('sessions'))
@@ -164,6 +165,7 @@ function startBreak() {
 function breakOrStudy() {
     //the studytime is now over (break time)
     if (valueMinutes == 0 && valueSeconds == 0 && studytime1 == true && breaktime1 == false) {
+        audio.play();
         breakmode();
         $("#timer").text(changeNumber(parseInt($("#timeBreak").text())) + ":00");
         studytime1 = false;
@@ -172,6 +174,7 @@ function breakOrStudy() {
     }
     //the breaktime is now over (study time)
     else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
+        audio.play();
         startmode();
         $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
         sessions += 1;
