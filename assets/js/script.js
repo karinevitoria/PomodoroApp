@@ -1,10 +1,14 @@
 let studytime1 = false;
 let breaktime1 = false;
-let sprints = 0;
+
+//session storage
+let sessionStorageSessions = JSON.parse(sessionStorage.getItem('sessions'))
+let sessions = sessionStorage.getItem('sessions') !== null ? sessionStorageSessions : 0;
 
 $("#timeSession").text(changeNumber(25));
 $("#timeBreak").text(changeNumber(5));
 $("#timer").text("00:10");
+
 
 function startmode() {
     $('#start').show();
@@ -14,6 +18,11 @@ function startmode() {
     $('#sbreak').hide();
     $('#lbreak').hide();
     $('#title').html("Study with the pomodoro technique. :)");
+    sessionStorage.getItem('sessions', sessions);
+    console.log(sessions);
+    if (sessions > 0) {
+        $("#showSession").text("Look at how many sessions you did today: " + sessions + ". Good job!");
+    }
 }
 function breakmode() {
     $('#start').hide();
@@ -169,7 +178,8 @@ function breakOrStudy() {
         startmode();
         // $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
         $("#timer").text("00:10");
-        sprints += 1;
+        sessions += 1;
+        sessionStorage.setItem('sessions', sessions)
         studytime1 = true;
         breaktime1 = false;
         clearInterval(intervalTimer);
