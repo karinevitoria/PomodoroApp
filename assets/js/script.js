@@ -7,8 +7,6 @@ let sessions = sessionStorage.getItem('sessions') !== null ? sessionStorageSessi
 
 $("#timeSession").text(changeNumber(25));
 $("#timeBreak").text(changeNumber(5));
-$("#timer").text("00:10");
-
 
 function startmode() {
     $('#start').show();
@@ -167,8 +165,7 @@ function breakOrStudy() {
     //the studytime is now over (break time)
     if (valueMinutes == 0 && valueSeconds == 0 && studytime1 == true && breaktime1 == false) {
         breakmode();
-        // $("#timer").text(changeNumber(parseInt($("#timeBreak").text())) + ":00");
-        $("#timer").text("00:10");
+        $("#timer").text(changeNumber(parseInt($("#timeBreak").text())) + ":00");
         studytime1 = false;
         breaktime1 = true;
         clearInterval(intervalTimer);
@@ -176,8 +173,7 @@ function breakOrStudy() {
     //the breaktime is now over (study time)
     else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
         startmode();
-        // $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
-        $("#timer").text("00:10");
+        $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
         sessions += 1;
         sessionStorage.setItem('sessions', sessions)
         studytime1 = true;
