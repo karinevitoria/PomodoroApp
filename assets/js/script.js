@@ -1,63 +1,64 @@
-let startmode = true;
-let breakmode = false;
-let longerbreak = false;
-let studytime = false;
-let studypause = false;
-let pauseStudy = false;
-let breaktime = false;
+let studytime1 = false;
+let breaktime1 = false;
 let sprints = 0;
 
 $("#timeSession").text(changeNumber(25));
 $("#timeBreak").text(changeNumber(5));
 $("#timer").text("00:10");
 
-function whichMode() {
-    if (startmode == true) {
-        $('#start').show();
-        $('#pause').hide();
-        $('#resume').hide();
-        $('#reset').hide();
-        $('#sbreak').hide();
-        $('#lbreak').hide();
-    } else if (breakmode == true) {
-        $('#start').hide();
-        $('#resume').hide();
-        $('#pause').hide();
-        $('#reset').hide();
-        $('#sbreak').show();
-        $('#lbreak').hide();
-    } else if (longerbreak == true) {
-        $('#start').hide();
-        $('#resume').hide();
-        $('#pause').hide();
-        $('#reset').hide();
-        $('#sbreak').show();
-        $('#lbreak').show();
-    } else if (studytime == true) {
-        $('#start').hide();
-        $('#resume').hide();
-        $('#pause').show();
-        $('#reset').show();
-        $('#sbreak').hide();
-        $('#lbreak').hide();
-    } else if (breaktime == true) {
-        $('#start').hide();
-        $('#resume').hide();
-        $('#pause').show();
-        $('#reset').show();
-        $('#sbreak').hide();
-        $('#lbreak').hide();
-    } else if (studypause == true) {
-        $('#start').hide();
-        $('#resume').show();
-        $('#pause').hide();
-        $('#reset').show();
-        $('#sbreak').hide();
-        $('#lbreak').hide();
-    }
+function startmode() {
+    $('#start').show();
+    $('#pause').hide();
+    $('#resume').hide();
+    $('#reset').hide();
+    $('#sbreak').hide();
+    $('#lbreak').hide();
+    $('#title').html("Study with the pomodoro technique. :)");
+}
+function breakmode() {
+    $('#start').hide();
+    $('#resume').hide();
+    $('#pause').hide();
+    $('#reset').hide();
+    $('#sbreak').show();
+    $('#lbreak').hide();
+    $('#title').html("Congrats on finishing your session! Do you want to start your break?");
+}
+function longBreak() {
+    $('#start').hide();
+    $('#resume').hide();
+    $('#pause').hide();
+    $('#reset').hide();
+    $('#sbreak').show();
+    $('#lbreak').show();
+}
+function studytime() {
+    $('#start').hide();
+    $('#resume').hide();
+    $('#pause').show();
+    $('#reset').show();
+    $('#sbreak').hide();
+    $('#lbreak').hide();
+    $('#title').text("Hey! It's time to focus. You can do it! Good luck.");
+}
+function breaktime() {
+    $('#start').hide();
+    $('#resume').hide();
+    $('#pause').show();
+    $('#reset').show();
+    $('#sbreak').hide();
+    $('#lbreak').hide();
+}
+function studypause() {
+    $('#start').hide();
+    $('#resume').show();
+    $('#pause').hide();
+    $('#reset').show();
+    $('#sbreak').hide();
+    $('#lbreak').hide();
 }
 
-whichMode();
+startmode();
 
 function changeNumber(num) {
     if (num < 10) {
@@ -89,88 +90,102 @@ function changeTime(mode, place) {
     if (place == "session") {
         $("#timeSession").text(changeNumber(valuePlace))
         $("#timer").text(changeNumber(valuePlace) + ":00");
+        if (valuePlace == 25) {
+            $("#timeBreak").text(changeNumber(5));
+        } else if (valuePlace == 45){
+            $("#timeBreak").text(changeNumber(15));
+        } else if (valuePlace == 50){
+            $("#timeBreak").text(changeNumber(10));}
     } else if (place == "break") {
         $("#timeBreak").text(changeNumber(valuePlace))
     }
 }
 
+function startStudying() {
+    studytime();
+    studytime1 = true;
+    timerStart();
+}
+
 function timerStart() {
-    if (pauseStudy == false) {
-        studypause = false;
-        startmode = false;
-        studytime = true;
-        whichMode();
+    intervalTimer = setInterval(() => {
+            valueTimer = $("#timer").text();
 
-        valueTimer = $("#timer").text();
-
-        valueTimer = valueTimer.split(":");
-        valueMinutes = parseInt(valueTimer[0]);
-        valueSeconds = parseInt(valueTimer[1]);
+            valueTimer = valueTimer.split(":");
+            valueMinutes = parseInt(valueTimer[0]);
+            valueSeconds = parseInt(valueTimer[1]);
 
 
-        if (valueSeconds == 0) {
-            valueMinutes -= 1;
-            valueSeconds = 59;
-        }
-        else {
-            valueSeconds -= 1;
-        }
+            if (valueSeconds == 0) {
+                valueMinutes -= 1;
+                valueSeconds = 59;
+            }
+            else {
+                valueSeconds -= 1;
+            }
 
-        $("#timer").text(changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds));
+            $("#timer").text(changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds));
 
-        if (valueMinutes == 0 && valueSeconds == 0 && studytime == true) {
-            breakmode = true;
-            studytime = false;
-            pauseStudy = true;
-            whichMode();
-            console.log
-            // $("#timer").text(changeNumber(parseInt($("#timeBreak").text())) + ":00");
-            $("#timer").text("00:10");
-            console.log(breaktime)
-            console.log(studytime)
-        } else if (valueMinutes == 0 && valueSeconds == 0 && breaktime == true) {
-            console.log('entrei aqui')
-            breaktime = false;
-            pauseStudy = true;
-            startmode = true;
-            whichMode();
-            // $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
-            $("#timer").text("00:10");
-            sprints += 1;
-        }
-    } else if (studypause == true) {
-        timerPause();
-    }
+            breakOrStudy();    
+    }, 1000);
 }
 
 function timerPause() {
-    studytime = false;
-    pauseStudy = true;
-    studypause = true;
-    whichMode();
+    clearInterval(intervalTimer);
+    studypause();
 }
 
 function setResumeMode() {
-    studypause = false;
-    pauseStudy = false;
-    studytime = true;
-    whichMode();
+    timerStart();
+    studytime();
 }
 
 function resetTime() {
-    startmode = true;
-    studytime = false;
-    pauseStudy = true;
-    studypause = false;
-    studymode = false;
-    whichMode();
+    startmode();
+    clearInterval(intervalTimer);
     let initialSession = $("#timeSession").text();
     $("#timer").text(initialSession + ":00");
 }
 
 function startBreak() {
-    pauseStudy = false;
-    breaktime = true;
-    breakmode = false;
-    whichMode();
+    breaktime();
+    timerStart();
+}
+
+function breakOrStudy() {
+    //the studytime is now over (break time)
+    if (valueMinutes == 0 && valueSeconds == 0 && studytime1 == true && breaktime1 == false) {
+        breakmode();
+        // $("#timer").text(changeNumber(parseInt($("#timeBreak").text())) + ":00");
+        $("#timer").text("00:10");
+        studytime1 = false;
+        breaktime1 = true;
+        clearInterval(intervalTimer);
+    }
+    //the breaktime is now over (study time)
+     else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
+        startmode();
+        // $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
+        $("#timer").text("00:10");
+        sprints += 1;
+        studytime1 = true;
+        breaktime1 = false;
+        clearInterval(intervalTimer);
+    }
+}
+
+//modal
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

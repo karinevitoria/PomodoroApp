@@ -10,34 +10,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Overpass&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Pomodoro</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>PomoApp</title>
 </head>
 
 <body>
     <div class="container">
         <div id="test">
-            
+
             <div id="bar">
                 <h1 id="title">Study with the pomodoro technique. :) </h1>
             </div>
-            <div class="modal" id="infos">
-                <button><span class="material-icons">info</span></button>
+            <div id="infos">
+                <button id="myBtn"><span class="material-icons">info</span></button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h1>PomoApp</h1>
+                        <p>The PomoApp was developed to help you study with the Pomodoro Technique.</p>
+                        <a href="https://github.com/karinevitoria/PomodoroApp" target="_blank">Click Here for the code.</a>
+                        <p>Made by Karine Vitoria. With ♥</p>
+                    </div>
+
+                </div>
             </div>
         </div>
         <div id="counter">
             <div id="controls">
-                <button onclick="setInterval(timerStart, 1000)" id="start"><span class="material-icons icons-counter">play_arrow</span>start</button>
-                <button onclick="setResumeMode()" id="resume"><span class="material-icons icons-counter">play_arrow</span>resume</button>
-                <button onclick="timerPause()" id="pause"><span class="material-icons icons-counter">pause</span>pause</button>
-                <button onclick="resetTime(),setResumeMode()" id="reset"><span class="material-icons icons-counter">replay</span>reset</button>
-                <button onclick="startBreak()" id="sbreak"><span class="material-icons icons-counter">play_arrow</span>start break</button>
+                <button onclick="startStudying()" id="start"><span
+                        class="material-icons icons-counter">play_arrow</span>start</button>
+                <button onclick="setResumeMode()" id="resume"><span
+                        class="material-icons icons-counter">play_arrow</span>resume</button>
+                <button onclick="timerPause()" id="pause"><span
+                        class="material-icons icons-counter">pause</span>pause</button>
+                <button onclick="resetTime()" id="reset"><span
+                        class="material-icons icons-counter">replay</span>reset</button>
+                <button onclick="startBreak()" id="sbreak"><span
+                        class="material-icons icons-counter">play_arrow</span>start break</button>
                 <button id="lbreak"><span class="material-icons icons-counter">play_arrow</span>longer break</button>
             </div>
             <div id="timerSection">
                 <p style="cursor: default;" id="timer">25:00</p>
             </div>
 
-<p>This is your first session.</p>
+            <p>This is your first session.</p>
 
         </div>
 
@@ -67,6 +85,9 @@
     </div>
 </body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./assets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./assets/js/script.js"></script>
+
 </html>

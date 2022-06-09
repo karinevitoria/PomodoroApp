@@ -5,8 +5,11 @@
 body {
     background-color: #F6FEDB;
 }
-#test{
-display: flex;}
+
+#test {
+    display: flex;
+}
+
 #bar {
     display: flex;
     width: 100%;
@@ -17,6 +20,15 @@ display: flex;}
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+#infos button {
+    background-color: #ACE4AA;
+    display: flex;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
 }
 
 #controls {
@@ -37,9 +49,10 @@ display: flex;}
 
 #timerSection {
     background-color: #A6B1E1;
-    width: fit-content;
+    width: 19rem;
     padding: 20px 40px 20px;
     border-radius: 20px;
+    text-align: center;
 }
 
 #timerSection p {
@@ -68,14 +81,14 @@ display: flex;}
     padding-top: 0px;
 }
 
-#controls button{
-cursor: pointer;
+#controls button {
+    cursor: pointer;
 }
 
 #timeSession {
     background-color: #ACE4AA;
     border-radius: 10px;
-    width: fit-content;
+    width: 3.4rem;
     padding: 0% 30% 5%;
     font-size: 3.4em;
 }
@@ -83,7 +96,7 @@ cursor: pointer;
 #timeBreak {
     background-color: #ACE4AA;
     border-radius: 10px;
-    width: fit-content;
+    width: 3.4rem;
     padding: 0% 30% 5%;
     font-size: 3.4em;
 }
@@ -99,10 +112,58 @@ cursor: pointer;
     align-items: center;
     justify-content: center;
 }
-#break{
+
+#break {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #F6FEDB;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
