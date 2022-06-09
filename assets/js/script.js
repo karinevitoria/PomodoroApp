@@ -89,15 +89,17 @@ function changeTime(mode, place) {
 
     if (place == "session") {
         $("#timeSession").text(changeNumber(valuePlace))
-        $("#timer").text(changeNumber(valuePlace) + ":00");
+        if (breaktime1 == false) { $("#timer").text(changeNumber(valuePlace) + ":00"); }
         if (valuePlace == 25) {
             $("#timeBreak").text(changeNumber(5));
-        } else if (valuePlace == 45){
+        } else if (valuePlace == 45) {
             $("#timeBreak").text(changeNumber(15));
-        } else if (valuePlace == 50){
-            $("#timeBreak").text(changeNumber(10));}
+        } else if (valuePlace == 50) {
+            $("#timeBreak").text(changeNumber(10));
+        }
     } else if (place == "break") {
         $("#timeBreak").text(changeNumber(valuePlace))
+        if (breaktime1 == true) { $("#timer").text(changeNumber(valuePlace) + ":00"); }
     }
 }
 
@@ -109,24 +111,24 @@ function startStudying() {
 
 function timerStart() {
     intervalTimer = setInterval(() => {
-            valueTimer = $("#timer").text();
+        valueTimer = $("#timer").text();
 
-            valueTimer = valueTimer.split(":");
-            valueMinutes = parseInt(valueTimer[0]);
-            valueSeconds = parseInt(valueTimer[1]);
+        valueTimer = valueTimer.split(":");
+        valueMinutes = parseInt(valueTimer[0]);
+        valueSeconds = parseInt(valueTimer[1]);
 
 
-            if (valueSeconds == 0) {
-                valueMinutes -= 1;
-                valueSeconds = 59;
-            }
-            else {
-                valueSeconds -= 1;
-            }
+        if (valueSeconds == 0) {
+            valueMinutes -= 1;
+            valueSeconds = 59;
+        }
+        else {
+            valueSeconds -= 1;
+        }
 
-            $("#timer").text(changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds));
+        $("#timer").text(changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds));
 
-            breakOrStudy();    
+        breakOrStudy();
     }, 1000);
 }
 
@@ -163,7 +165,7 @@ function breakOrStudy() {
         clearInterval(intervalTimer);
     }
     //the breaktime is now over (study time)
-     else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
+    else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
         startmode();
         // $("#timer").text(changeNumber(parseInt($("#timeSession").text())) + ":00");
         $("#timer").text("00:10");
@@ -178,14 +180,14 @@ function breakOrStudy() {
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
+btn.onclick = function () {
+    modal.style.display = "block";
 }
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
+span.onclick = function () {
     modal.style.display = "none";
-  }
+}
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
