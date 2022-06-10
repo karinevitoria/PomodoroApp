@@ -136,6 +136,8 @@ function timerStart() {
 
         $("#timer").text(changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds));
 
+        document.querySelector('title').innerHTML = changeNumber(valueMinutes) + ":" + changeNumber(valueSeconds);
+
         breakOrStudy();
     }, 1000);
 }
@@ -171,6 +173,7 @@ function breakOrStudy() {
         studytime1 = false;
         breaktime1 = true;
         clearInterval(intervalTimer);
+        document.querySelector('title').innerHTML('Break time!');
     }
     //the breaktime is now over (study time)
     else if (valueMinutes == 0 && valueSeconds == 0 && breaktime1 == true) {
@@ -182,6 +185,7 @@ function breakOrStudy() {
         studytime1 = true;
         breaktime1 = false;
         clearInterval(intervalTimer);
+        document.querySelector('title').innerHTML('Study time!');
     }
 }
 

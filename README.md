@@ -42,4 +42,8 @@ If you want to improve something in this app, please feel free to create pull re
 ## 🔑 License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
+## Improvements
+Now the timer also appears at the title of the tab.
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
